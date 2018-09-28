@@ -1,5 +1,7 @@
 # Project 1 Empirical Analysis of Algorithms
 
+THIS README IS OUTDATED
+
 A simple analysis of several algorithms
 
 
