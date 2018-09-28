@@ -6,24 +6,21 @@
 using namespace std;
 
 // Function prototypes
-vector<bool> sieve (unsigned long);
+vector<unsigned long> sieve (unsigned long);
+unsigned long msp(unsigned long, unsigned long);
 
 int main () {
 
-	int n = 4;
-
-	vector<bool> p = sieve(100);
-
-	for(int i = 0; i < p.size(); ++i)
-		if(p[i])
-			cout << i  << endl;
+	vector<unsigned long> p = sieve(100);
 	
 	return 0;
-
 }
 
-vector<bool> sieve (unsigned long n) {
+vector<unsigned long> sieve (unsigned long n) {
+
 	vector<bool> A(n);
+	vector<unsigned long> p(n);
+	
 	for(int i = 0; i < n; ++i)
 		A[i] = 1;
 	
@@ -34,5 +31,14 @@ vector<bool> sieve (unsigned long n) {
 			}
 		}
 	}
-	return A;
+	for(int i = 0; i < A.size(); ++i)
+		if(A[i])
+			p.push_back(i);
+	return p;
+}
+
+unsigned long msp(unsigned long m, unsigned long n) {
+   	vector<unsigned long> mprimes = sieve(m);
+	vector<unsigned long> nprimes = sieve(n);
+	
 }
