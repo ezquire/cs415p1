@@ -1,8 +1,6 @@
-# Project 1 Empirical Analysis of Algorithms
+# Empirical Analysis of Algorithms
 
-THIS README IS OUTDATED
-
-A simple analysis of several algorithms
+A simple analysis of several algorithms that calculate the greatest common demonitator of two integers.
 
 
 Group
@@ -19,7 +17,7 @@ To build the various task executables run
 make
 ```
 
-Then you can run the prgrams from the current directory
+Then you can run the programs from the current directory
 ```
 ./taskx
 ```
