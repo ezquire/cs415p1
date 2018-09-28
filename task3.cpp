@@ -32,16 +32,32 @@
 #include <vector>
 #include <fstream>
 #include <math.h>
+#include <stdlib.h> /* srand, rand */
+#include <time.h>
+#include <algorithm>  
 
 using namespace std;
 
 // Function prototypes
 vector<unsigned long> sieve (unsigned long);
-unsigned long msp(unsigned long, unsigned long);
+vector<unsigned long> msp(vector<unsigned long>, vector<unsigned long>);
+vector<unsigned long> createVect(unsigned long);
 
 int main () {
 
-	vector<unsigned long> p = sieve(100);
+	srand(time(NULL));
+
+	unsigned long m = 300;
+	unsigned long n = 40;
+	vector<unsigned long> mvect = createVect(m);
+	vector<unsigned long> nvect = createVect(n);
+
+	vector<unsigned long> c = msp(mvect, nvect);
+
+	cout << "c.size()" << c.size() << endl;
+
+	for(unsigned long i = 0; i < c.size(); i++)
+		cout << c[i] << endl;
 	
 	return 0;
 }
@@ -67,8 +83,40 @@ vector<unsigned long> sieve (unsigned long n) {
 	return p;
 }
 
-unsigned long msp(unsigned long m, unsigned long n) {
-   	vector<unsigned long> mprimes = sieve(m);
-	vector<unsigned long> nprimes = sieve(n);
+vector<unsigned long> msp(vector<unsigned long> mvect,
+						  vector<unsigned long> nvect) { 
+	vector<unsigned long> msp;
+	//unsigned long num;
+
+	vector<unsigned long>::iterator itm = mvect.begin();
+	vector<unsigned long>::iterator itn = nvect.begin();
+
+	while(itm != mvect.end() && itn != nvect.end()) {
+		if(*itm < *itn)
+			itm++;
+		else if( *itn < *itm)
+			itn++;
+		else {
+			itm++;
+			itn++;
+			if(*itn != 0) 
+				msp.push_back(*itn);
+		}
+	}
+	cout << "msp size: " << msp.size() << endl;
+	return msp;
+}
+
+vector<unsigned long> createVect(unsigned long n) {
+	vector<unsigned long> vect;
+	unsigned long num = 0;
+	/* generate random number between 1 and n/2: */
+	for(int i = 1; i < ((n/2) + 1); ++i) {		
+	   num = rand()%i + 1;
+	   vect.push_back(num);
+	}
+
+	sort(vect.begin(), vect.end());
 	
+	return vect;
 }

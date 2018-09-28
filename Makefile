@@ -1,4 +1,4 @@
-CFLAGS = -g -Wall -Werror - Wpedantic
+CFLAGS = -g -Wall -Werror -Wpedantic
 
 srcs = $(wildcard /*.cpp)
 
