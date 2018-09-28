@@ -30,6 +30,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <time.h>
+#include <math.h>
 
 using namespace std;
 
@@ -44,11 +46,13 @@ int main() {
 	double md = 0;
 
 	euclid.open("euclid2.txt", ios::out);
-	
+   
+   clock_t start = clock();
 	for(unsigned int i = 5; i < 100; i += 5) {
 		euclid << i << " " << mdAvg(i) << endl;
 	}
-
+   clock_t end = clock();
+   cout << "it took: " << ((end - start) / (double) CLOCKS_PER_SEC) << " seconds to compute" << endl;
 	euclid.close();
 	
 	return 0;
