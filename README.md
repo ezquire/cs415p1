@@ -14,7 +14,7 @@ Usage
 
 To build the various task executables run
 ```
-g++ -o taskx taskx.cpp
+make
 ```
 
 Then you can run the prgrams from the current directory
@@ -34,6 +34,10 @@ To generate the scatterplot graphs run
 gnuplot scatterx.gnuplot
 ```
 
+To clear the output files and executables use
+```
+make clean
+```
 
 Sample Output
 -----
