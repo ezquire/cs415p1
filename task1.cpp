@@ -63,6 +63,10 @@ int consec(int m, int n, double& d) {
 	while(t != 0) {
 		if((m%t == 0) && (n%t == 0))
 			return t;
+		else if(((m%t == 0) && !(n%t == 0)) || (!(m%t == 0) && (n%t == 0))) {
+			++d;
+			--t;
+		}
 		else {
 			d += 2;
 			--t;
