@@ -10,4 +10,4 @@ tasks : $(objs)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 clean :
-	rm task1 task2 task3 *~
+	rm task1 task2 task3 *~ *.txt
