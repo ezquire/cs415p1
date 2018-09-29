@@ -43,17 +43,24 @@ unsigned long fib(unsigned int);
 int main() {
 
 	ofstream euclid;
+	ofstream timeeuclid;
 	double md = 0;
 
 	euclid.open("euclid2.txt", ios::out);
-   
-   clock_t start = clock();
-	for(unsigned int i = 5; i < 100; i += 5) {
-		euclid << i << " " << mdAvg(i) << endl;
+	timeeuclid.open("timeeuclid.txt", ios::out);
+
+    for(int i = 0; i < 20; ++i) {
+        clock_t start = clock();
+	
+        for(unsigned int i = 5; i < 100; i += 5) {
+		    euclid << i << " " << mdAvg(i) << endl;
+	    }
+        
+        clock_t end = clock();
+        timeeuclid << ((end - start) / (double) CLOCKS_PER_SEC) << endl;
 	}
-   clock_t end = clock();
-   cout << "it took: " << ((end - start) / (double) CLOCKS_PER_SEC) << " seconds to compute" << endl;
-	euclid.close();
+    timeeuclid.close();
+    euclid.close();
 	
 	return 0;
 }
