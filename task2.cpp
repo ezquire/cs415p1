@@ -49,10 +49,10 @@ int main() {
 	euclid.open("euclid2.txt", ios::out);
 	timeeuclid.open("timeeuclid.txt", ios::out);
 
-    for(int i = 0; i < 20; ++i) {
+    for(int i = 0; i < 100; ++i) {
         clock_t start = clock();
 	
-        for(unsigned int i = 5; i < 100; i += 5) {
+        for(unsigned int i = 0; i < 100; ++i) {
 		    euclid << i << " " << mdAvg(i) << endl;
 	    }
         

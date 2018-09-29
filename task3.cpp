@@ -42,23 +42,21 @@ using namespace std;
 vector<unsigned long> sieve (unsigned long);
 vector<unsigned long> msp(vector<unsigned long>, vector<unsigned long>);
 vector<unsigned long> createVect(unsigned long);
+void clock (unsigned long, bool, vector<unsigned long>, vector<unsigned long>);
 
 int main () {
 
 	srand(time(NULL));
 
+	unsigned long i = 10;
 	unsigned long m = 300;
 	unsigned long n = 40;
 	vector<unsigned long> mvect = createVect(m);
 	vector<unsigned long> nvect = createVect(n);
 
-	vector<unsigned long> c = msp(mvect, nvect);
+	clock(i, 1, mvect, nvect);
+	clock(i, 0, mvect, nvect);
 
-	cout << "c.size()" << c.size() << endl;
-
-	for(unsigned long i = 0; i < c.size(); i++)
-		cout << c[i] << endl;
-	
 	return 0;
 }
 
@@ -70,7 +68,7 @@ vector<unsigned long> sieve (unsigned long n) {
 	for(int i = 0; i < n; ++i)
 		A[i] = 1;
 	
-	for(unsigned long i = 2; i*i <= n; ++i) {
+	for(unsigned long i = 2; i <= sqrt(n); ++i) {
 		if(A[i]) {
 			for(unsigned long j = i*2; j <= n; j += i) {
 				A[j] = 0;
@@ -86,7 +84,6 @@ vector<unsigned long> sieve (unsigned long n) {
 vector<unsigned long> msp(vector<unsigned long> mvect,
 						  vector<unsigned long> nvect) { 
 	vector<unsigned long> msp;
-	//unsigned long num;
 
 	vector<unsigned long>::iterator itm = mvect.begin();
 	vector<unsigned long>::iterator itn = nvect.begin();
@@ -103,7 +100,6 @@ vector<unsigned long> msp(vector<unsigned long> mvect,
 				msp.push_back(*itn);
 		}
 	}
-	cout << "msp size: " << msp.size() << endl;
 	return msp;
 }
 
@@ -111,12 +107,42 @@ vector<unsigned long> createVect(unsigned long n) {
 	vector<unsigned long> vect;
 	unsigned long num = 0;
 	/* generate random number between 1 and n/2: */
-	for(int i = 1; i < ((n/2) + 1); ++i) {		
-	   num = rand()%i + 1;
+	for(int i = 0; i < n; ++i) {		
+		num = rand()%((n/2) + 1);
 	   vect.push_back(num);
 	}
 
 	sort(vect.begin(), vect.end());
 	
 	return vect;
+}
+
+void clock (unsigned long j, bool choice, vector<unsigned long> m,
+			vector<unsigned long> n) {
+	ofstream timeSieve;
+	ofstream timeCommon;
+	vector<unsigned long> common;
+	vector<unsigned long> siv;
+
+	timeSieve.open("timeSieve.txt", ios::out);
+	timeCommon.open("timeCommon.txt", ios::out);
+
+	for(int i = 0; i < j; ++i) {
+		if(choice) {
+			clock_t start = clock();
+			siv = sieve(i);
+			clock_t end = clock();
+			timeSieve << i << " " << ((end - start) / (double) CLOCKS_PER_SEC);
+			timeSieve << endl;
+		}
+		else {
+			clock_t start = clock();
+			common = msp(m, n);
+			clock_t end = clock();
+			timeCommon << i << " " << ((end - start) / (double) CLOCKS_PER_SEC);
+			timeCommon << endl;
+		}
+	}
+	timeSieve.close();
+	timeCommon.close();
 }

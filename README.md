@@ -1,5 +1,7 @@
 # Empirical Analysis of Algorithms
 
+we should script this
+
 A simple analysis of several algorithms that calculate the greatest common demonitator of two integers.
 
 
@@ -17,9 +19,9 @@ To build the various task executables run
 make
 ```
 
-Then you can run the programs from the current directory
+Then you can run all the programs from the current directory by typing
 ```
-./taskx
+./task[x]
 ```
 
 Each task will generate one or more text files that can be used with the provided gnuplot scripts to make a scatterplot
