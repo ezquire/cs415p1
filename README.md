@@ -1,12 +1,9 @@
 # Empirical Analysis of Algorithms
 
-we should script this
 
 A simple analysis of several algorithms that calculate the greatest common demonitator of two integers.
 
-
-Group
------
+## Group
 
 Tyler Gearing, Mei Williams
 
