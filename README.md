@@ -1,5 +1,5 @@
 # Empirical Analysis of Algorithms
-
+[![Build Status](https://travis-ci.com/ezquire/empirical-analysis.svg?branch=master)](https://travis-ci.com/ezquire/empirical-analysis)
 
 A simple analysis of several algorithms that calculate the greatest common demonitator of two integers.
 
