@@ -37,11 +37,3 @@ To clear the output files and executables use
 ```
 make clean
 ```
-
-Sample Output
------
-
-![alt text](https://imgur.com/4uIfakw "Task 1")
-
-![alt text](https://imgur.com/JqMPm9y "Task 2")
-
